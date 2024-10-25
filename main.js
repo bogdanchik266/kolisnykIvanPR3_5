@@ -2,7 +2,7 @@ const $btnKick = document.getElementById('btn-kick');
 const $btnSpecialAttack = document.getElementById('btn-special-attack');
 const $logs = document.getElementById('logs');
 const $clickCounter = document.getElementById('click-counter');
-const $remainingClicks = document.getElementById('remaining-clicks'); // Додаємо новий елемент для залишкових натискань
+const $remainingClicks = document.getElementById('remaining-clicks'); 
 
 const maxClicks = 6; // Максимальна кількість натискань
 let clickCount = 0; // Лічильник натискань
@@ -101,7 +101,7 @@ function init() {
     console.log('Start Game!');
     character.renderHP();
     enemy.renderHP();
-    updateRemainingClicks(); // Оновлюємо залишок натискань
+    updateRemainingClicks(); 
 }
 
 function random(num) {
@@ -118,7 +118,7 @@ function attackCharacter(attacker, defender, damage) {
 }
 
 function handleAttack(isSpecialAttack = false) {
-    const characterDamage = isSpecialAttack ? random(30) : random(20); // Спеціальна атака завдає 30 шкоди
+    const characterDamage = isSpecialAttack ? random(30) : random(20); 
     const enemyDamage = random(20);
 
     attackCharacter(character, enemy, characterDamage);
@@ -127,14 +127,14 @@ function handleAttack(isSpecialAttack = false) {
     const logMessage = generateLog(character, enemy, characterDamage, character.damageHP, enemyDamage, enemy.damageHP);
     const randomLog = logs[random(logs.length) - 1]; // -1 for indexing
 
-    $logs.innerHTML = `<p>${logMessage}</p><p>${randomLog}</p>` + $logs.innerHTML; // Add log at the top
+    $logs.innerHTML = `<p>${logMessage}</p><p>${randomLog}</p>` + $logs.innerHTML; 
 
     checkWinner();
 }
 
 function updateRemainingClicks() {
-    const remainingClicks = maxClicks - clickCount; // Розрахунок залишкових натискань
-    $remainingClicks.innerText = `Залишилося натискань: ${remainingClicks}`; // Виведення залишкових натискань
+    const remainingClicks = maxClicks - clickCount; 
+    $remainingClicks.innerText = `Залишилося натискань: ${remainingClicks}`; 
 }
 
 function createClickCounter() {
@@ -142,7 +142,7 @@ function createClickCounter() {
         if (clickCount < maxClicks) {
             clickCount++;
             $clickCounter.innerText = `Кількість натискань: ${clickCount}`; // Оновлення тексту на сторінці
-            updateRemainingClicks(); // Оновлення залишкових натискань
+            updateRemainingClicks(); 
             return true;
         } else {
             console.log('Досягнуто максимальну кількість натискань');
